@@ -2,6 +2,7 @@ package com.example.myapplication.ui.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.util.Log;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.util.Patterns;
@@ -17,6 +18,8 @@ import android.os.Bundle;
 import com.example.myapplication.R;
 import com.example.myapplication.network.api.HandleListener;
 import com.example.myapplication.network.api.LoginManager;
+import com.example.myapplication.network.api.Profile.ProfileManager;
+import com.example.myapplication.network.model.dto.UserInformationDTO;
 import com.example.myapplication.network.api.User.UserManager;
 import com.example.myapplication.network.model.dto.UserInformationDTO;
 import com.example.myapplication.network.model.instance.JwtTokenManager;
@@ -24,6 +27,8 @@ import com.example.myapplication.network.model.instance.JwtTokenManager;
 public class MainActivity extends AppCompatActivity {
     Button buttonLogin;
     EditText editTextUsername, editTextPassword;
+
+    int userId;
     TextView tvSignUp;
 
     @SuppressLint("WrongViewCast")
@@ -88,9 +93,17 @@ public class MainActivity extends AppCompatActivity {
         loginManager.loginUser(username, password, new LoginManager.OnLoginListener() {
             @Override
             public void onLoginSuccess(String token) {
+
                 // Lấy SharedPreferences
                 JwtTokenManager.getInstance().setToken(token);
 
+                        ProfileManager profileManager = new ProfileManager();
+                        profileManager.getUserInfor(new HandleListener<UserInformationDTO>() {
+                            @Override
+                            public void onSuccess(UserInformationDTO userInformationDTO) {
+                                userId = userInformationDTO.getUserId();
+                                // Chuyển hướng sang TestActivity
+        
                 // Gọi API lấy ra thông tin người dùng
                 UserManager.getProfileUser(new HandleListener<UserInformationDTO>() {
                     @Override
@@ -105,7 +118,15 @@ public class MainActivity extends AppCompatActivity {
 
                         // Chuyển sang homeActivity
                         Intent i = new Intent(getApplicationContext(), TestActivity.class);
-                        startActivity(i);
+                                i.putExtra("LOGGED_USER_ID", userId); // Đặt giá trị userId vào Intent
+                                startActivity(i);
+                            }
+
+                            @Override
+                            public void onFailure(String errorMessage) {
+                                System.out.println("Get id fail!");
+                            }
+                        });
                     }
 
                     @Override
@@ -136,3 +157,6 @@ public class MainActivity extends AppCompatActivity {
         return phoneNumber.matches(phonePattern);
     }
 }
+
+
+//0854705932

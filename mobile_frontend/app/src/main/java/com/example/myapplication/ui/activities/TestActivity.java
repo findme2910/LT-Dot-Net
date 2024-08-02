@@ -14,6 +14,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.ui.fragment.CommentsFragment;
 import com.example.myapplication.ui.fragment.AddFriendFragment;
 import com.example.myapplication.ui.fragment.HomeFragment;
+import com.example.myapplication.ui.fragment.ProfileFragment;
 import com.example.myapplication.ui.fragment.NotificationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -32,6 +33,7 @@ public class TestActivity extends AppCompatActivity {
         final Fragment notificationFragment = new NotificationFragment();
 
         final Fragment friendFragment = new AddFriendFragment();
+        final Fragment profileFragment = new ProfileFragment();
 
         createPost = findViewById(R.id.create_post);
 
@@ -60,7 +62,7 @@ public class TestActivity extends AppCompatActivity {
                 createPost.setVisibility(View.GONE);
             }
             if (item.getItemId() == R.id.navigation_profile) {
-
+                replaceFragment(profileFragment);
             }
             if (item.getItemId() == R.id.navigation_logout) {
                 finish();

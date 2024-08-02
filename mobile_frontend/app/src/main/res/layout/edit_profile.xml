@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/icon_arrow_back"
+        android:contentDescription="Back"
+        android:layout_gravity="start"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/edit_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:backgroundTint="#ccc"
+        android:background="@drawable/circle_image"
+         android:scaleType="centerCrop"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#fff"
+        />
+    <Button
+        android:id="@+id/chooseImage_button"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#4864a4"
+        android:textColor="@color/white"
+        android:text="Choose image"
+        android:layout_marginBottom="40dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full Name"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center_vertical"
+        />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:inputType="text"
+        android:layout_margin="10dp"
+        android:elevation="5dp"
+        android:background="@drawable/edit_text_corner"
+        android:hint="Name"
+        />
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Phone"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="18dp"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_gravity="center_vertical"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/edit_phone"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="10dp"-->
+<!--        android:inputType="text"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:elevation="5dp"-->
+<!--        android:background="@drawable/edit_text_corner"-->
+<!--        android:hint="Phone"/>-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Birthday"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/edit_birthDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:inputType="text"
+        android:layout_margin="10dp"
+        android:elevation="5dp"
+        android:background="@drawable/edit_text_corner"
+        android:hint="Birthday"/>
+
+    <Button
+        android:id="@+id/saveUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_corner"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:text="Lưu"/>
+
+
+
+
+</LinearLayout>
+
+
+

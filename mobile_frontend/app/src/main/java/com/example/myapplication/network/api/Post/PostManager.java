@@ -30,6 +30,25 @@ public class PostManager {
         });
     }
 
+    public void getSpecificPost(int userId, HandleListener<List<PostViewDTO>> callback) {
+        String token = JwtTokenManager.getInstance().getToken();
+        Call<List<PostViewDTO>> call = postApi.getSpecificPost("Bearer " + token, userId);
+        call.enqueue(new Callback<List<PostViewDTO>>() {
+            @Override
+            public void onResponse(Call<List<PostViewDTO>> call, Response<List<PostViewDTO>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onFailure("Failed to get specific post");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<PostViewDTO>> call, Throwable t) {
+                callback.onFailure("Load Failure");
+            }
+        });
+    }
 
     public void like(LikeDTO dto, HandleListener<String> callback) {
         String token = JwtTokenManager.getInstance().getToken();

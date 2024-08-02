@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/add_friend"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+
+    <RelativeLayout
+        android:id="@+id/post1_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/posts_title"
+        android:layout_marginTop="8dp">
+        <ImageView
+            android:id="@+id/profile_post_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:backgroundTint="#ccc"
+            android:src="@drawable/icon_person"
+            android:background="@drawable/circle_image"
+            android:layout_marginStart="10dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/profile_post_image"
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/post_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:text="Username" />
+
+            <TextView
+                android:id="@+id/post_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textSize="16dp"
+                android:text="2h"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/post_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:layout_below="@id/profile_post_image"
+            android:text="Nội dung của bài viết"/>
+
+
+        <ImageView
+            android:id="@+id/post1_image"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_below="@id/post_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@color/black" />
+
+
+        <LinearLayout
+            android:id="@+id/count_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_below="@+id/post1_image"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/likeCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:text="100 likes"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/commentCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:text="20 comments"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"/>
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/line_after_countLike"
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
+            android:layout_below="@id/count_container"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:id="@+id/icon_container"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@id/line_after_countLike"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/like_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/icon_heart"
+                android:contentDescription="Thích"
+                android:background="@color/white"/>
+
+            <!-- Đường ngăn cách dọc -->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray"/>
+
+            <ImageButton
+                android:id="@+id/comment_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_comment"
+                android:contentDescription="Bình luận"
+                android:background="@color/white"/>
+
+            <!-- Đường ngăn cách dọc -->
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray"/>
+
+            <ImageButton
+                android:id="@+id/share1_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_share"
+                android:contentDescription="Chia sẻ"
+                android:background="@color/white"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/icon_container"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/darker_gray" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -58,6 +58,7 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.View
         ImageView imageView = holder.avatarImageView;
         imageView.setImageBitmap(ImageConvert.base64ToBitMap(friendRequest.getAvatar()));
 
+
         // Sử lý sự kiện cho các nút
         holder.acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override

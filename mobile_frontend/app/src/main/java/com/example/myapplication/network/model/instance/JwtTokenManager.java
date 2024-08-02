@@ -1,5 +1,4 @@
 package com.example.myapplication.network.model.instance;
-
 public class JwtTokenManager {
     private static JwtTokenManager instance;
     private String token;
@@ -22,4 +21,5 @@ public class JwtTokenManager {
     public void setToken(String token) {
         this.token = token;
     }
+
 }
