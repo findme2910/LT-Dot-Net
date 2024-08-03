@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj": {}
+    "d:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj": {}
   },
   "projects": {
-    "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj": {
+    "d:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
+        "projectUniqueName": "d:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
         "projectName": "dotnet_backend",
-        "projectPath": "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
+        "projectPath": "d:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
         "packagesPath": "C:\\Users\\Huy11\\.nuget\\packages\\",
-        "outputPath": "D:\\nam3\\mobile\\dotnet_backend\\obj\\",
+        "outputPath": "d:\\nam3\\mobile\\dotnet_backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Huy11\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -43,6 +43,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.7, )"
@@ -63,6 +71,14 @@
               "target": "Package",
               "version": "[8.0.7, )"
             },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.5, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[8.0.2, )"
@@ -70,6 +86,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.0.1, )"
             }
           },
           "imports": [
