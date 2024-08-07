@@ -1,7 +1,7 @@
 using System.Text;
 using dotnet_backend.Helper;
 using dotnet_backend.MiddleWare;
-
+using dotnet_backend.Repository;
 using dotnet_backend.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -47,6 +47,7 @@ builder.Services.AddSingleton<PasswordService>();
 
 // builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 
 builder.Services.AddCors(options =>

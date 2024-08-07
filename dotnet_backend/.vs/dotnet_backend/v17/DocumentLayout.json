@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|d:\\hcm uaf\\lt-dot-net\\dotnet_backend\\service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|solutionrelative:service\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|d:\\hcm uaf\\lt-dot-net\\dotnet_backend\\service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|solutionrelative:service\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|d:\\hcm uaf\\lt-dot-net\\dotnet_backend\\repository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|solutionrelative:repository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|d:\\hcm uaf\\lt-dot-net\\dotnet_backend\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|solutionrelative:repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|d:\\hcm uaf\\lt-dot-net\\dotnet_backend\\contronller\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|solutionrelative:contronller\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|d:\\hcm uaf\\lt-dot-net\\dotnet_backend\\service\\authstaticservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|solutionrelative:service\\authstaticservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|d:\\hcm uaf\\lt-dot-net\\dotnet_backend\\helper\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01F8FC94-2D05-4773-A4F5-B7E711D50477}|dotnet_backend.csproj|solutionrelative:helper\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Service\\UserService.cs",
+              "RelativeDocumentMoniker": "Service\\UserService.cs",
+              "ToolTip": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Service\\UserService.cs",
+              "RelativeToolTip": "Service\\UserService.cs",
+              "ViewState": "AQIAAD4AAAAAAAAAAAAgwEcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T09:52:44.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Contronller\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "Contronller\\AuthenticationController.cs",
+              "ToolTip": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Contronller\\AuthenticationController.cs",
+              "RelativeToolTip": "Contronller\\AuthenticationController.cs",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAAAB0AAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T09:51:53.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthStaticService.cs",
+              "DocumentMoniker": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Service\\AuthStaticService.cs",
+              "RelativeDocumentMoniker": "Service\\AuthStaticService.cs",
+              "ToolTip": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Service\\AuthStaticService.cs",
+              "RelativeToolTip": "Service\\AuthStaticService.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwBQAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T08:42:18.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Service\\IUserService.cs",
+              "RelativeDocumentMoniker": "Service\\IUserService.cs",
+              "ToolTip": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Service\\IUserService.cs",
+              "RelativeToolTip": "Service\\IUserService.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAiwA4AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T08:32:27.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Repository\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\IUserRepository.cs",
+              "ToolTip": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Repository\\IUserRepository.cs",
+              "RelativeToolTip": "Repository\\IUserRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T08:32:16.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Repository\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\UserRepository.cs",
+              "ToolTip": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Repository\\UserRepository.cs",
+              "RelativeToolTip": "Repository\\UserRepository.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwA4AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T08:02:28.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "JwtHelper.cs",
+              "DocumentMoniker": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Helper\\JwtHelper.cs",
+              "RelativeDocumentMoniker": "Helper\\JwtHelper.cs",
+              "ToolTip": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\Helper\\JwtHelper.cs",
+              "RelativeToolTip": "Helper\\JwtHelper.cs",
+              "ViewState": "AQIAADUAAAAAAAAAAAAgwCcAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-07T07:22:39.295Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

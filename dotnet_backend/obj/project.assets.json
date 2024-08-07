@@ -4496,24 +4496,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Huy11\\.nuget\\packages\\": {}
+    "C:\\Users\\ACER\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
+      "projectUniqueName": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\dotnet_backend.csproj",
       "projectName": "dotnet_backend",
-      "projectPath": "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
-      "packagesPath": "C:\\Users\\Huy11\\.nuget\\packages\\",
-      "outputPath": "D:\\nam3\\mobile\\dotnet_backend\\obj\\",
+      "projectPath": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\dotnet_backend.csproj",
+      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+      "outputPath": "D:\\HCM UAF\\LT-Dot-Net\\dotnet_backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Huy11\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

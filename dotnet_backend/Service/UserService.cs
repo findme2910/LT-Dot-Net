@@ -18,6 +18,8 @@ namespace dotnet_backend.Service
         private readonly ApplicationDBContext _context;
 
         private readonly JwtHelper jwtHelper;
+
+        private readonly AuthStaticService _authStaticService;
         public UserService(PasswordService passwordService, JwtHelper jwtHelper , IConfiguration configuration, ApplicationDBContext applicationDBContext)
         {
             _passwordHasher = passwordService;
@@ -67,5 +69,11 @@ namespace dotnet_backend.Service
                 throw new Exception("Password incorrect");
             }
         }
+
+        //public HomeViewDTO getHomeView()
+        //{
+        //    User user = _authStaticService.currentUser();
+        //    return HomeViewDTO.builder
+        //}
     }
 }

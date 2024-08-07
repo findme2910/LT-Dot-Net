@@ -11,5 +11,7 @@ namespace dotnet_backend.Service
         void register(RegisterDTO dto);
 
         string login(LoginDTO dto);
+
+        HomeViewDTO getHomeView();
     }
 }
