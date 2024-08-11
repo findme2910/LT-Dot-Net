@@ -13,16 +13,17 @@ namespace dotnet_backend.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int UserId { get; set; }
-
-       
-
         public string Content { get; set; }
+         public int TriggerId { get; set; }
 
         // Navigation properties
+          [ForeignKey("TriggerId")]
         public User Trigger { get; set; }
        
         public DateTime CreateAt { get; set; }
-
+         public int? PostId { get; set; }  // Nullable nếu thông báo không luôn luôn liên quan đến bài viết
+        [ForeignKey("PostId")]
+        public Post post {get; set;}
         // Enum mapping
         public NotificationType Type { get; set; }
     }

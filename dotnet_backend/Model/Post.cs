@@ -1,32 +1,27 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+using dotnet_backend.Model;
 
-namespace dotnet_backend.Model
+public class Post
 {
-    public class Post
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public int UserId { get; set; }
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int Id { get; set; }
 
-        public string Content { get; set; }
+    [ForeignKey("User")]
+    public int UserId { get; set; }
 
-        // Blob trong Java chuyển thành byte[] trong C#
-        public byte[] Image { get; set; }
+    [Required]
+    public string Content { get; set; }
 
-        // Entity Framework sẽ tự động gán giá trị cho các thuộc tính thời gian
-        public DateTime CreateAt { get; set; }
-        public DateTime UpdateAt { get; set; }
+    public byte[] Image { get; set; }
 
-        // Navigation properties
-        public User User { get; set; }
+    public DateTime CreateAt { get; set; } = DateTime.UtcNow;
+    public DateTime UpdateAt { get; set; } = DateTime.UtcNow;
 
-        public ICollection<Like> Likes { get; set; } = new List<Like>();
-        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
-    }
+    // Navigation properties
+    public User User { get; set; }
+
+    public ICollection<Like> Likes { get; set; } = new List<Like>();
+    public ICollection<Comment> Comments { get; set; } = new List<Comment>();
 }
