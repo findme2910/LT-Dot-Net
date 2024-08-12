@@ -41,9 +41,41 @@ namespace dotnet_backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("FromUserId");
 
                     b.ToTable("FriendRequests");
+                });
+
+            modelBuilder.Entity("Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<byte[]>("Image")
+                        .IsRequired()
+                        .HasColumnType("longblob");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("UserFriends", b =>
@@ -140,6 +172,12 @@ namespace dotnet_backend.Migrations
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int?>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TriggerId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
@@ -148,41 +186,11 @@ namespace dotnet_backend.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PostId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Notifications");
-                });
-
-            modelBuilder.Entity("dotnet_backend.Model.Post", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("CreateAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<byte[]>("Image")
-                        .IsRequired()
-                        .HasColumnType("longblob");
-
-                    b.Property<DateTime>("UpdateAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("dotnet_backend.Model.User", b =>
@@ -244,11 +252,22 @@ namespace dotnet_backend.Migrations
                 {
                     b.HasOne("dotnet_backend.Model.User", "FromUser")
                         .WithMany("FriendRequests")
+                        .HasForeignKey("FromUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("FromUser");
+                });
+
+            modelBuilder.Entity("Post", b =>
+                {
+                    b.HasOne("dotnet_backend.Model.User", "User")
+                        .WithMany("Posts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("FromUser");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("UserFriends", b =>
@@ -272,7 +291,7 @@ namespace dotnet_backend.Migrations
                         .WithMany("Replys")
                         .HasForeignKey("CommentId");
 
-                    b.HasOne("dotnet_backend.Model.Post", "Post")
+                    b.HasOne("Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -291,14 +310,14 @@ namespace dotnet_backend.Migrations
 
             modelBuilder.Entity("dotnet_backend.Model.Like", b =>
                 {
-                    b.HasOne("dotnet_backend.Model.Post", "Post")
+                    b.HasOne("Post", "Post")
                         .WithMany("Likes")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("dotnet_backend.Model.User", "User")
-                        .WithMany()
+                        .WithMany("Likes")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -310,6 +329,10 @@ namespace dotnet_backend.Migrations
 
             modelBuilder.Entity("dotnet_backend.Model.Notification", b =>
                 {
+                    b.HasOne("Post", "post")
+                        .WithMany()
+                        .HasForeignKey("PostId");
+
                     b.HasOne("dotnet_backend.Model.User", "Trigger")
                         .WithMany("Notifications")
                         .HasForeignKey("UserId")
@@ -317,17 +340,8 @@ namespace dotnet_backend.Migrations
                         .IsRequired();
 
                     b.Navigation("Trigger");
-                });
 
-            modelBuilder.Entity("dotnet_backend.Model.Post", b =>
-                {
-                    b.HasOne("dotnet_backend.Model.User", "User")
-                        .WithMany("Posts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
+                    b.Navigation("post");
                 });
 
             modelBuilder.Entity("dotnet_backend.Model.UserFriend", b =>
@@ -349,16 +363,16 @@ namespace dotnet_backend.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("dotnet_backend.Model.Comment", b =>
-                {
-                    b.Navigation("Replys");
-                });
-
-            modelBuilder.Entity("dotnet_backend.Model.Post", b =>
+            modelBuilder.Entity("Post", b =>
                 {
                     b.Navigation("Comments");
 
                     b.Navigation("Likes");
+                });
+
+            modelBuilder.Entity("dotnet_backend.Model.Comment", b =>
+                {
+                    b.Navigation("Replys");
                 });
 
             modelBuilder.Entity("dotnet_backend.Model.User", b =>
@@ -366,6 +380,8 @@ namespace dotnet_backend.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("FriendRequests");
+
+                    b.Navigation("Likes");
 
                     b.Navigation("Notifications");
 

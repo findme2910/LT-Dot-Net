@@ -24,7 +24,6 @@ public class NotificationController {
 				// gọi thông báo getNotis ừ notificationSevice và chuyển danh sách thông báo thành luồng stream để thực hiện cho việc biến dổi
 				.ok(notificationService.getNotis(dto).stream()// stream cung cấp phương thức map,reduce để thao tác với dữ liệu không phải sử dụng các vòng lặp
 						.map(UserMapper.INSTANCE::NotificationToDTO).toList());
-
 	}
 
 }

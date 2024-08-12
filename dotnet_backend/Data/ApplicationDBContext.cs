@@ -53,8 +53,49 @@ namespace WebNet.Data
              );
             modelBuilder.Entity<UserFriend>()
            .HasKey(uf => new { uf.UserId, uf.FriendId });
-            base.OnModelCreating(modelBuilder);
+
+            //Thiết lập mối quan hệ giữa like,user và post
+              modelBuilder.Entity<Like>()
+        .HasOne(l => l.User)
+        .WithMany(u => u.Likes) // Thêm thuộc tính Likes vào User nếu chưa có
+        .HasForeignKey(l => l.UserId)
+        .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Like>()
+        .HasOne(l => l.Post)
+        .WithMany(p => p.Likes) // Thêm thuộc tính Likes vào Post nếu chưa có
+        .HasForeignKey(l => l.PostId)
+        .OnDelete(DeleteBehavior.Cascade);
+
+        //Thiết lập khóa ngoại friendRequest
+        modelBuilder.Entity<FriendRequest>()
+        .HasOne(fr => fr.FromUser)
+        .WithMany(u => u.FriendRequests)
+        .HasForeignKey(fr => fr.FromUserId)
+        .OnDelete(DeleteBehavior.Restrict);
             
+             // Cấu hình khóa ngoại
+    modelBuilder.Entity<Notification>()
+        .HasOne(n => n.Trigger)
+        .WithMany(u => u.Notifications)
+        .HasForeignKey(n => n.TriggerId)
+        .OnDelete(DeleteBehavior.Restrict);  // Khi người dùng bị xóa, không xóa thông báo
+
+     modelBuilder.Entity<Notification>()
+        .HasOne<User>()
+        .WithMany(u => u.Notifications) // Cần thêm thuộc tính Notifications vào lớp User
+        .HasForeignKey(n => n.UserId)
+        .OnDelete(DeleteBehavior.Cascade);  // Khi người nhận bị xóa, xóa thông báo
+    // modelBuilder.Entity<Notification>()
+    //     .HasOne(n => n.post)
+    //     .WithMany(p => p.notification)
+    //     .HasForeignKey(n => n.PostId)
+    //     .OnDelete(DeleteBehavior.SetNull);  // Khi bài viết bị xóa, giữ thông báo nhưng đặt PostId thành null
+
+
+        base.OnModelCreating(modelBuilder);
+
+
         }
 
 

@@ -60,17 +60,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         //handle Comment
         holder.postComment.setOnClickListener(view -> {
             Context context = view.getContext();
-            if (context instanceof FragmentActivity) {
-                FragmentActivity activity = (FragmentActivity) context;
-                CommentsFragment commentsFragment = new CommentsFragment();
-                Bundle args = new Bundle();
-                args.putInt("postID", post.getPostId());
-                commentsFragment.setArguments(args);
-                activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout, commentsFragment) // id của trang home
-                        .addToBackStack(null)
-                        .commit();
-            }
+            Intent intent = new Intent(context, CommentsActivity.class);
+            intent.putExtra("postID", post.getPostId());
+            context.startActivity(intent);
         });
 
 
