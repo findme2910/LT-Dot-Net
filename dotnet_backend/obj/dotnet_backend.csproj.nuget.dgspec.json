@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj": {}
+    "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj": {}
   },
   "projects": {
-    "d:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj": {
+    "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
+        "projectUniqueName": "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
         "projectName": "dotnet_backend",
-        "projectPath": "d:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
+        "projectPath": "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
         "packagesPath": "C:\\Users\\Huy11\\.nuget\\packages\\",
-        "outputPath": "d:\\nam3\\mobile\\dotnet_backend\\obj\\",
+        "outputPath": "D:\\nam3\\mobile\\dotnet_backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Huy11\\AppData\\Roaming\\NuGet\\NuGet.Config"
