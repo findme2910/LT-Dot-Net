@@ -17,40 +17,49 @@
 
             <!-- Profile Image -->
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/post_user_avatar"
-                app:civ_border_width="2dp"
-                android:src="@drawable/ic_launcher_background"
-                app:civ_border_color="#FFFFFF"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:layout_marginLeft="8dp"
-                />
+                    android:id="@+id/post_user_avatar"
+                    app:civ_border_width="2dp"
+                    android:src="@drawable/ic_launcher_background"
+                    app:civ_border_color="#FFFFFF"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_marginLeft="8dp"
+            />
 
 
-            <LinearLayout
+            <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_toRightOf="@id/post_user_avatar"
                     android:orientation="vertical">
 
+
                 <TextView
                         android:id="@+id/post_user_name"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Username"
                         android:textColor="#000"
                         android:textSize="19dp"
                         android:textStyle="bold"/>
+                <ImageView android:id="@+id/muti_setting" android:layout_alignParentEnd="true" android:layout_marginEnd="40px"
+                           android:layout_width="wrap_content" android:layout_height="wrap_content"
+                           android:src="@drawable/baseline_more_horiz_24"></ImageView>
 
                 <TextView
                         android:id="@+id/post_createAt"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2h"
+                        android:layout_below="@id/post_user_name"
                         android:textColor="#000"
                         android:textSize="16dp"/>
-            </LinearLayout>
+                <ImageView android:layout_below="@id/post_user_name" android:layout_toEndOf="@id/post_createAt"
+                           android:src="@drawable/baseline_public_24" android:layout_width="50px"
+                           android:layout_height="50px" android:layout_marginTop="6px"
+                           android:layout_marginStart="15px"></ImageView>
+            </RelativeLayout>
 
             <TextView
                     android:id="@+id/post_content"
@@ -72,7 +81,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginRight="8dp"
 
-                />
+            />
 
             <LinearLayout
                     android:id="@+id/count_container"
@@ -153,12 +162,12 @@
                         android:src="@drawable/ic_comment"/>
             </LinearLayout>
             <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/icon_container"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@android:color/darker_gray" />
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/icon_container"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@android:color/darker_gray"/>
         </RelativeLayout>
 
         <!-- Thêm các bài viết khác nếu cần -->

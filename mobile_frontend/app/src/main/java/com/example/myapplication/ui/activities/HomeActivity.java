@@ -163,7 +163,7 @@ public class HomeActivity extends FragmentActivity {
                         .createAt(n.getCreateAt())
                         .build());
             });
-            postAdapter = new PostAdapter(posts);
+            postAdapter = new PostAdapter(posts, HomeActivity.this);
             postsRecyclerView.setAdapter(postAdapter);
             homeRefresh.setRefreshing(false);
         }
