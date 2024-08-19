@@ -24,7 +24,7 @@
             android:icon="@drawable/ic_nofication" />
     <item
             android:id="@+id/navigation_logout"
-            android:title="Logout"
-            android:icon="@drawable/ic_logout" />
+            android:title="Menu"
+            android:icon="@drawable/baseline_menu_24" />
     <!-- Thêm các item khác nếu cần -->
 </menu>

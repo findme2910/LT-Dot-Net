@@ -1,93 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:background="@color/lightwhite"
-    tools:context=".ui.activities.MainActivity">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="10dp"
+              style="@style/DECOLOR"
+              tools:context=".ui.activities.MainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
 
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" Log In"
-            android:layout_gravity="center"
-            android:fontFamily="sans-serif-medium"
-            android:textColor="@color/blackcolor"
-            android:textSize="25dp"
-            android:textStyle="bold"
-            android:id="@+id/log_in"
-            />
+                style="@style/DECOLOR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Log In"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
+
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:id="@+id/log_in"
+        />
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/img"
-            android:layout_marginTop="40dp">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/img"
+                android:layout_marginTop="40dp">
             <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@drawable/ic_face_black_24dp"
-                />
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/ic_face_black_24dp"
+            />
         </LinearLayout>
 
 
         <EditText
-            android:layout_width="355dp"
-            android:layout_height="41dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn"
-            android:elevation="5dp"
-            android:hint="Phone Number"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="15dp"
-            android:id="@+id/et_email"/>
+                style="@style/BoxColor"
+                android:layout_width="355dp"
+                android:layout_height="41dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:elevation="5dp"
+                android:hint="Phone Number"
+                android:inputType="textEmailAddress"
+
+                android:paddingLeft="15dp"
+                android:id="@+id/et_email"/>
         <EditText
-            android:layout_width="350dp"
-            android:layout_height="45dp"
-            android:hint="Password"
-            android:elevation="5dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:paddingLeft="15dp"
-            android:inputType="textPassword"
-            android:background="@drawable/btn"
-            android:id="@+id/et_password"/>
+                style="@style/BoxColor"
+                android:layout_width="355dp"
+                android:layout_height="45dp"
+                android:hint="Password"
+                android:elevation="5dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="15dp"
+                android:inputType="textPassword"
+
+                android:id="@+id/et_password"/>
         <Button
-            android:layout_width="350dp"
-            android:layout_height="45dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:text="Log In"
-            android:textAllCaps="false"
-            android:background="@drawable/joinbtn"
-            android:textColor="@color/whitecolor"
-            android:id="@+id/log_in_button"/>
+                android:layout_width="350dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:text="Log In"
+                android:textAllCaps="false"
+                android:background="@drawable/joinbtn"
+                android:textColor="@color/whitecolor"
+                android:id="@+id/log_in_button"/>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="No account! Register?"
-            android:textColor="@color/fullwhite"
-            android:layout_marginTop="25dp"
-            android:id="@+id/tv_sign_up"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="No account! Register?"
+                android:textColor="@color/fullwhite"
+                android:layout_marginTop="25dp"
+                android:id="@+id/tv_sign_up"/>
     </LinearLayout>
 
 </LinearLayout>

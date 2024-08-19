@@ -65,7 +65,7 @@ public class TestActivity extends AppCompatActivity {
                 replaceFragment(profileFragment);
             }
             if (item.getItemId() == R.id.navigation_logout) {
-                finish();
+                startActivity(new Intent(getApplicationContext(),SettingActivity.class));
             }
             return true;
         });

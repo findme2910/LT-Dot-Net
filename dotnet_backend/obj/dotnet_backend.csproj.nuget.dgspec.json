@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Study\\Third_year\\LT MobileVaDotnettoan\\Social App\\LTMobile---Social-app\\dotnet_backend\\dotnet_backend.csproj": {}
+    "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj": {}
   },
   "projects": {
-    "D:\\Study\\Third_year\\LT MobileVaDotnettoan\\Social App\\LTMobile---Social-app\\dotnet_backend\\dotnet_backend.csproj": {
+    "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\Third_year\\LT MobileVaDotnettoan\\Social App\\LTMobile---Social-app\\dotnet_backend\\dotnet_backend.csproj",
+        "projectUniqueName": "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
         "projectName": "dotnet_backend",
-        "projectPath": "D:\\Study\\Third_year\\LT MobileVaDotnettoan\\Social App\\LTMobile---Social-app\\dotnet_backend\\dotnet_backend.csproj",
-        "packagesPath": "C:\\Users\\uyent\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\Third_year\\LT MobileVaDotnettoan\\Social App\\LTMobile---Social-app\\dotnet_backend\\obj\\",
+        "projectPath": "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
+        "packagesPath": "C:\\Users\\Huy11\\.nuget\\packages\\",
+        "outputPath": "D:\\nam3\\mobile\\dotnet_backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\uyent\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Huy11\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
