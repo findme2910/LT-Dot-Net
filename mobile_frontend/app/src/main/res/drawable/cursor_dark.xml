@@ -1,0 +1,5 @@
+<!-- res/drawable-night/cursor_dark.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF"/> <!-- Cursor màu trắng -->
+    <size android:width="2dp"/>
+</shape>

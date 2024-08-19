@@ -38,7 +38,7 @@ namespace dotnet_backend.Model
         public ICollection<User> Friends { get; set; } = new List<User>();
         public ICollection<FriendRequest> FriendRequests { get; set; } = new List<FriendRequest>();
         public ICollection<Notification> Notifications { get; set; } = new List<Notification>();
-
+        public ICollection<Like> Likes { get; set; } = new List<Like>();  // Thêm thuộc tính Likes
         public int CurrentNoti { get; set; }
     }
 }

@@ -21,8 +21,7 @@ public class MyBottomSheetFragment extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        Button closeButton = view.findViewById(R.id.btnClose);
-        closeButton.setOnClickListener(v -> dismiss());
+//        Button closeButton = view.findViewById(R.id.btnClose);
+//        closeButton.setOnClickListener(v -> dismiss());
     }
 }

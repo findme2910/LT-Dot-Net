@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import com.example.myapplication.R;
 import com.example.myapplication.network.api.HandleListener;
 import com.example.myapplication.network.api.LoginManager;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         editTextUsername = findViewById(R.id.et_email);
         editTextPassword = findViewById(R.id.et_password);

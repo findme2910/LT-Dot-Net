@@ -18,4 +18,22 @@
     <color name="whitecolor">#fff</color>
     <color name="greencolor">#43CEBB</color>
     <color name="fullwhite">#7A7A7A</color>
+
+    <color name="colorPrimaryLight">#6200EE</color>
+    <color name="colorPrimaryDarkLight">#3700B3</color>
+    <color name="colorAccentLight">#03DAC5</color>
+    <color name="textColorLight">#000000</color>
+    <color name="backgroundLight">#FFFFFF</color>
+
+
+    <color name="colorPrimaryDark">#BB86FC</color>
+    <color name="colorPrimaryDarker">#3700B3</color>
+    <color name="colorAccentDark">#03DAC5</color>
+    <color name="textColorDark">#FFFFFF</color>
+    <color name="backgroundDark">#000000</color>
+
+    <color name="switchThumbOnColorLight">#4CAF50</color>
+    <color name="switchTrackOnColorLight">#A5D6A7</color>
+    <color name="switchThumbOnColorDark">#81C784</color>
+    <color name="switchTrackOnColorDark">#388E3C</color>
 </resources>

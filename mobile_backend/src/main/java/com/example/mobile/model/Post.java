@@ -36,7 +36,7 @@ public class Post {
 	private Date createAt;
 	@CreationTimestamp
 	private Date updateAt;
-	
+
 	@ManyToOne
 	@JsonBackReference 
 	private User user;

@@ -1,21 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="16dp" style="@style/DECOLOR">
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="This is a bottom sheet"
-            android:textSize="18sp" />
+            android:textStyle="bold"
+            android:text="Ai có thể xem bài viết của bạn:"
+            android:textSize="18sp"
+            style="@style/DECOLOR"
+            android:layout_marginBottom="16dp" android:id="@+id/font"/>
 
-    <!-- Thêm các phần tử khác nếu cần -->
-    <Button
-            android:id="@+id/btnClose"
+    <RadioGroup
+            android:id="@+id/radioGroup_scope"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Close" />
+            android:orientation="vertical">
+
+        <RadioButton
+                android:id="@+id/radio_public"
+                style="@style/CustomRadioButton"
+                android:text="Public"
+                android:drawableLeft="@drawable/baseline_public_24"
+                android:drawablePadding="8dp" />
+
+        <RadioButton
+                android:id="@+id/radio_friend"
+                style="@style/CustomRadioButton"
+                android:text="Friend"
+                android:drawableLeft="@drawable/friend"
+                android:drawablePadding="8dp" />
+
+        <RadioButton
+                android:id="@+id/radio_private"
+                style="@style/CustomRadioButton"
+                android:text="Private"
+                android:drawableLeft="@drawable/baseline_lock_24"
+                android:drawablePadding="8dp" />
+    </RadioGroup>
+
 </LinearLayout>
