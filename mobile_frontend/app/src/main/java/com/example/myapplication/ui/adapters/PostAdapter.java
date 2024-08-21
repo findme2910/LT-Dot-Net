@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
@@ -22,6 +23,7 @@ import com.example.myapplication.network.model.dto.LikeDTO;
 import com.example.myapplication.ui.activities.CommentsActivity;
 import com.example.myapplication.ui.fragment.CommentsFragment;
 
+import com.example.myapplication.ui.fragment.MyBottomSheetFragment;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,9 +35,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private List<Post> posts;
     private PostManager postManager;
 
-    public PostAdapter(List<Post> posts) {
+    private Context context;
+
+    public PostAdapter(List<Post> posts , Context context) {
         this.posts = posts;
         this.postManager = new PostManager();
+        this.context = context;
     }
 
     @NonNull
@@ -65,10 +70,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             context.startActivity(intent);
         });
 
-
+        holder.mutiChoose.setOnClickListener(n -> {
+            MyBottomSheetFragment bottomSheet = new MyBottomSheetFragment();
+            bottomSheet.show(((FragmentActivity) context).getSupportFragmentManager(), bottomSheet.getTag());
+        });
         holder.like.setText(post.getNumberOfLike()+" likes");
         if (post.isLike()) {
-
             holder.likeButton.setImageResource(R.drawable.heart);
         } else {
 
@@ -120,6 +127,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private TextView comment;
         private ImageButton likeButton;
         private ImageButton postComment;
+        private ImageView mutiChoose;
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             avatar = itemView.findViewById(R.id.post_user_avatar);
@@ -131,6 +139,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             comment = itemView.findViewById(R.id.post_number_comment);
             likeButton = itemView.findViewById(R.id.post_like_button);
             postComment = itemView.findViewById(R.id.post_comment);
+            mutiChoose = itemView.findViewById(R.id.muti_setting);
         }
     }
 

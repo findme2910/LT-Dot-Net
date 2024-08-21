@@ -123,7 +123,7 @@ public class ProfileFragment extends Fragment {
         editProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(editProfileButton.getText() + "----------------------------------------");
+
                 if (editProfileButton.getText().toString().equalsIgnoreCase("Chỉnh sửa trang cá nhân")) {
                     Intent i = new Intent(getActivity(), ProfileEditActivity.class);
                     profileEditLauncher.launch(i); // Bắt đầu ProfileEditActivity

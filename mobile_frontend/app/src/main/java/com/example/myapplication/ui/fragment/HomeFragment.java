@@ -110,7 +110,7 @@ public class HomeFragment extends Fragment {
                         .createAt(n.getCreateAt())
                         .build());
             });
-            postAdapter = new PostAdapter(posts);
+            postAdapter = new PostAdapter(posts , HomeFragment.this.getContext());
             postsRecyclerView.setAdapter(postAdapter);
             homeRefresh.setRefreshing(false);
         }

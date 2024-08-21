@@ -1,60 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nested_scroll_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragment.NotificationFragment">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.NotificationFragment"
+        style="@style/DECOLOR">
 
     <RelativeLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:layout_marginRight ="@dimen/activity_horizontal_margin">
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            style="@style/DECOLOR"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin">
 
         <TextView
-            android:id="@+id/label_noti"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thông Báo"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+                style="@style/DECOLOR"
+                android:id="@+id/label_noti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thông Báo"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/label_new"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hôm Nay"
-            android:layout_below="@id/label_noti"
-            android:layout_marginTop="@dimen/item_margin_top"
-            style="@style/fontLabel"/>
+                style="@style/DECOLOR"
+                android:id="@+id/label_new"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hôm Nay"
+                android:layout_below="@id/label_noti"
+                android:layout_marginTop="@dimen/item_margin_top"
+        />
 
         <!-- RecyclerView for today's notifications -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_items_today"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/label_new"
-            android:layout_marginTop="@dimen/item_margin_top"/>
+                android:id="@+id/rv_items_today"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_new"
+                android:layout_marginTop="@dimen/item_margin_top" style="@style/DECOLOR"/>
 
         <TextView
-            android:id="@+id/label_later"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Trước Đây"
-            android:layout_below="@id/rv_items_today"
-            android:layout_marginTop="@dimen/item_margin_top"
-            style="@style/fontLabel"/>
+                android:id="@+id/label_later"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trước Đây"
+                android:layout_below="@id/rv_items_today"
+                android:layout_marginTop="@dimen/item_margin_top"
+                style="@style/DECOLOR"/>
 
         <!-- RecyclerView for earlier notifications -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_items_later"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/label_later"
-            android:layout_marginTop="@dimen/item_margin_top"/>
+                android:id="@+id/rv_items_later"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_later"
+                android:layout_marginTop="@dimen/item_margin_top"
+                style="@style/DECOLOR"/>
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

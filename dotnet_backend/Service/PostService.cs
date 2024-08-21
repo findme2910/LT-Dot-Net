@@ -62,36 +62,38 @@ namespace dotnet_backend.Service
                 .ToList();
         }
 
-       public List<Post> GetSpecific(int userId)
-    {
-    return _context.Posts
-        .Where(p => p.UserId == userId)
-        .Include(p => p.Comments)
-        .Include(p => p.Likes)
-        .Include(p => p.User)
-        .OrderByDescending(p => p.CreateAt)
-        .ToList();
-    }
+        public List<Post> GetSpecific(int userId)
+        {
+            return _context.Posts
+                .Where(p => p.UserId == userId)
+                .Include(p => p.Comments)
+                .Include(p => p.Likes)
+                .Include(p => p.User)
+                .OrderByDescending(p => p.CreateAt)
+                .ToList();
+        }
 
-   public List<Comment> GetComments(int postId)
-{
-    var post = _context.Posts
-        .Include(p => p.Comments)
-            .ThenInclude(c => c.User)  // Bao gồm thông tin User của Comment
-        .Include(p => p.Comments)
-            .ThenInclude(c => c.Replys)
-                .ThenInclude(r => r.User)  // Bao gồm thông tin User của Reply
-        .FirstOrDefault(p => p.Id == postId);
+        public List<Comment> GetComments(int postId)
+        {
+            var post = _context.Posts
+                .Include(p => p.Comments)
+                    .ThenInclude(c => c.User)  // Bao gồm thông tin User của Comment
+                .FirstOrDefault(p => p.Id == postId);
+            var replyIds = post?.Comments.SelectMany(c => c.Replys.Select(r => r.Id)).ToList();
 
-    if (post == null)
-    {
-        throw new Exception("Post not found");
-    }
+            var mainComments = post?.Comments
+    .Where(c => !replyIds.Contains(c.Id))
+    .ToList();
 
-    return post.Comments.ToList();
-}
+            if (post == null)
+            {
+                throw new Exception("Post not found");
+            }
+
+            return mainComments;
+        }
 
 
-    
+
     }
 }

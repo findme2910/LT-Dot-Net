@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "JIE5eFOulbQ=",
+  "dgSpecHash": "Cress9/S1Ok=",
   "success": true,
   "projectFilePath": "D:\\Study\\Third_year\\LT MobileVaDotnettoan\\Social App\\LTMobile---Social-app\\dotnet_backend\\dotnet_backend.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\uyent\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\uyent\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\uyent\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\uyent\\.nuget\\packages\\google.protobuf\\3.26.1\\google.protobuf.3.26.1.nupkg.sha512",

@@ -15,12 +15,17 @@ namespace dotnet_backend.Helper
                 userId = post.User.Id,
                 avatarUser = Convert.ToBase64String(post.User.Avatar),
                 image = Convert.ToBase64String(post.Image),
+                content = post.Content,
                 numberLike = post.Likes.Count,
-                numberComment = post.Comments.Count + post.Comments.Sum(c => c.Replys.Count),
-                createAt = post.CreateAt.Ticks,
+                numberComment = post.Comments.Count ,
+                createAt = DateToMillis(post.CreateAt),
                 name = post.User.Name
             };
         }
+         public static long DateToMillis(DateTime date)
+    {
+        return ((DateTimeOffset)date).ToUnixTimeMilliseconds();
+    }
 
         public static CommentViewDTO EntityToCommentViewDTO(Comment comment)
         {
@@ -30,14 +35,14 @@ namespace dotnet_backend.Helper
                 avatar = Convert.ToBase64String(comment.User.Avatar),
                 name = comment.User.Name,
                 content = comment.Content,
-                createAt = comment.CreateAt.Ticks,
+                createAt = DateToMillis(comment.CreateAt),
                 replys = comment.Replys.Select(reply => new CommentViewDTO
                 {
                     commentId = reply.Id,
                     avatar = Convert.ToBase64String(reply.User.Avatar),
                     name = reply.User.Name,
                     content = reply.Content,
-                    createAt = reply.CreateAt.Ticks
+                    createAt = DateToMillis(reply.CreateAt)
                 }).ToList()
             };
         }

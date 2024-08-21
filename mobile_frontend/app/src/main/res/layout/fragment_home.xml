@@ -3,12 +3,14 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".ui.fragment.HomeFragment">
+             tools:context=".ui.fragment.HomeFragment"
+             style="@style/DECOLOR">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_home"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            style="@style/DECOLOR">
         <!-- ScrollView để nội dung có thể cuộn được -->
         <ScrollView
                 android:layout_width="match_parent"
