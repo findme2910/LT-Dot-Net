@@ -5,6 +5,6 @@ public class ProfileDTO
 	public string name { get; set; }
 	public long birth { get; set; }
 	public string avatar { get; set; }
-	public bool own { get; set; }
+	public bool Own { get; set; }
 	public List<FriendViewDTO> friends { get; set; }
 }}

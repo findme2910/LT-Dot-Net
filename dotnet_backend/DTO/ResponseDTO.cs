@@ -7,12 +7,12 @@ namespace dotnet_backend.DTO
 {
     public class ResponseDTO
     {
-        public string Response { get; set; }
+        public string response { get; set; }
 
         // Constructor with parameter
         public ResponseDTO(string response)
         {
-            Response = response;
+            this.response = response;
         }
 
         // Parameterless constructor

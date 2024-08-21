@@ -7,9 +7,9 @@ public static class UserMapper
     {
         return new UserInformationDTO
         {
-            UserId = user.Id,
-            Avatar = Convert.ToBase64String(user.Avatar),
-            Name = user.Name
+            userId = user.Id,
+            avatar = Convert.ToBase64String(user.Avatar),
+            name = user.Name
         };
     }
 
@@ -48,13 +48,13 @@ public static class UserMapper
 {
     return new NotificationDTO
     {
-        Avatar = Convert.ToBase64String(notification.Trigger.Avatar),
-        Content = notification.Content,
-        TriggerId = notification.Trigger.Id,  // Sử dụng Trigger.Id vì bạn không có TriggerId trong Notification
-        TriggerName = notification.Trigger?.Name, // Lấy tên người kích hoạt thông báo
-        PostId = notification.post?.Id, // Post có thể là null, do đó cần kiểm tra trước khi lấy Id
-        CreateAt = notification.CreateAt,
-        Type = notification.Type
+        avatar = Convert.ToBase64String(notification.Trigger.Avatar),
+        content = notification.Content,
+        triggerId = notification.Trigger.Id,  // Sử dụng Trigger.Id vì bạn không có TriggerId trong Notification
+        triggerName = notification.Trigger?.Name, // Lấy tên người kích hoạt thông báo
+        postId = notification.post?.Id, // Post có thể là null, do đó cần kiểm tra trước khi lấy Id
+        createAt = notification.CreateAt,
+        type = notification.Type
     };
 }
 }}

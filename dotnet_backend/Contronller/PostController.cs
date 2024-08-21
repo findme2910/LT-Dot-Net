@@ -50,7 +50,7 @@ namespace dotnet_backend.Controller
                 foreach (var post in posts)
                 {
                     var postDTO = result.First(r => r.postId == post.Id);
-                    postDTO.isLiked = post.Likes.Any(l => l.UserId == userId);
+                    postDTO.liked = post.Likes.Any(l => l.UserId == userId);
                 }
                 return Ok(result);
             }
@@ -71,7 +71,7 @@ namespace dotnet_backend.Controller
                 foreach (var post in posts)
                 {
                     var postDTO = result.First(r => r.postId == post.Id);
-                    postDTO.isLiked = post.Likes.Any(l => l.UserId == id);
+                    postDTO.liked = post.Likes.Any(l => l.UserId == id);
                 }
                 return Ok(result);
             }

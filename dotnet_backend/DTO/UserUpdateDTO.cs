@@ -1,8 +1,8 @@
 namespace dotnet_backend.DTO{
 public class UserUpdateDTO
 {
-    public string Name { get; set; }
-    public string Avatar { get; set; }
-    public string Password { get; set; }
-    public long Birth { get; set; }
+    public string name { get; set; }
+    public string avatar { get; set; }
+    public string password { get; set; }
+    public long birth { get; set; }
 }}

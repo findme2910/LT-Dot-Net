@@ -26,7 +26,6 @@ public class NotificationService
             UserId = to.UserId,
             CreateAt = DateTime.UtcNow
         };
-        to.User.Notifications.Add(notification);
         _context.Notifications.Add(notification);
         _context.SaveChanges();
     }
@@ -62,8 +61,6 @@ public class NotificationService
             UserId = to.UserId,
             CreateAt = DateTime.UtcNow
         };
-
-        to.User.Notifications.Add(notification);
         _context.Notifications.Add(notification);
         _context.SaveChanges();
     }

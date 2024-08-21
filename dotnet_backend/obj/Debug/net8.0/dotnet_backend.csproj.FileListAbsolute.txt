@@ -270,3 +270,4 @@ D:\Study\Third_year\LT MobileVaDotnettoan\Social App\LTMobile---Social-app\dotne
 D:\nam3\mobile\dotnet_backend\bin\Debug\net8.0\Scrutor.dll
 D:\nam3\mobile\dotnet_backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
 D:\nam3\mobile\dotnet_backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
+d:\nam3\mobile\dotnet_backend\bin\Debug\net8.0\AutoMapper.dll

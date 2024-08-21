@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "8jT6VaWGt04=",
+  "dgSpecHash": "PEK/Y3q2B6k=",
   "success": true,
-  "projectFilePath": "D:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
+  "projectFilePath": "d:\\nam3\\mobile\\dotnet_backend\\dotnet_backend.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Huy11\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Huy11\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Huy11\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\Huy11\\.nuget\\packages\\google.protobuf\\3.26.1\\google.protobuf.3.26.1.nupkg.sha512",

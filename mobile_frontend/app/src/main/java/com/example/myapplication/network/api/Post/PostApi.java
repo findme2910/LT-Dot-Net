@@ -24,6 +24,6 @@ public interface PostApi {
     @POST("/post")
     public Call<ResponseDTO> createPost(@Body AddPostDTO dto, @Header("Authorization") String token);
 
-    @POST("/post/like")
+    @POST("/user/like")
     public Call<ResponseDTO> like(@Body LikeDTO dto, @Header("Authorization") String token);
 }

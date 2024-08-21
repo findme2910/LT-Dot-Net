@@ -71,12 +71,13 @@ builder.Services.AddSingleton<JwtHelper>(provider =>
      builder.Configuration["Jwt:Issuer"],
      builder.Configuration["Jwt:Audience"]
  ));
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddSingleton<PasswordService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<AuthStaticService>(); // Đăng ký AuthStaticService
 builder.Services.AddScoped<NotificationService>();
-builder.Services.AddHttpContextAccessor(); 
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
