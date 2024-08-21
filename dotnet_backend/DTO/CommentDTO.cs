@@ -1,6 +1,6 @@
 namespace dotnet_backend.DTO{
 public class CommentDTO
 {
-    public int PostId { get; set; }
-    public string Content { get; set; }
+    public int postId { get; set; }
+    public string content { get; set; }
 }}

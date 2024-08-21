@@ -33,7 +33,7 @@ namespace dotnet_backend.Controllers
         {
             var userId = GetCurrentUserId();
             var profileDTO = _userService.GetProfile(userId);
-            profileDTO.own = true;  // Mark profile as owned by the current user
+            profileDTO.Own = true;  // Mark profile as owned by the current user
             return Ok(profileDTO);
         }
 
@@ -46,7 +46,7 @@ namespace dotnet_backend.Controllers
 
             if (userId == profileDTO.userId)
             {
-                profileDTO.own = true;  // Mark profile as owned by the current user
+                profileDTO.Own = true;  // Mark profile as owned by the current user
             }
 
             return Ok(profileDTO);

@@ -35,12 +35,12 @@ public IActionResult GetFriends()
         var currentUser = _authStaticService.CurrentUser();
         if (currentUser == null)
         {
-            return BadRequest(new ResponseDTO { Response = "User not found" });
+            return BadRequest(new ResponseDTO { response = "User not found" });
         }
 
         if (currentUser.Friends == null)
         {
-            return BadRequest(new ResponseDTO { Response = "Friends list is null" });
+            return BadRequest(new ResponseDTO { response = "Friends list is null" });
         }
 
         // Lọc ra bạn bè, loại bỏ chính người dùng hiện tại
@@ -53,7 +53,7 @@ public IActionResult GetFriends()
     }
     catch (Exception e)
     {
-        return BadRequest(new ResponseDTO { Response = e.Message });
+        return BadRequest(new ResponseDTO { response = e.Message });
     }
 }
 
@@ -72,7 +72,7 @@ public IActionResult GetFriends()
         }
         catch (Exception e)
         {
-            return BadRequest(new ResponseDTO { Response = e.Message });
+            return BadRequest(new ResponseDTO { response = e.Message });
         }
     }
     //Phương thức addfriend người khác 
@@ -83,11 +83,11 @@ public IActionResult GetFriends()
         try
         {
             _userService.HandleFriendRequest(dto);
-            return Ok(new ResponseDTO { Response = "Success" });
+            return Ok(new ResponseDTO { response = "Success" });
         }
         catch (Exception e)
         {
-            return BadRequest(new ResponseDTO { Response = e.Message });
+            return BadRequest(new ResponseDTO { response = e.Message });
         }
     }
 
@@ -98,11 +98,11 @@ public IActionResult GetFriends()
         try
         {
             _userService.HandleRejectFriendRequest(dto);
-            return Ok(new ResponseDTO { Response = "Success" });
+            return Ok(new ResponseDTO { response = "Success" });
         }
         catch (Exception e)
         {
-            return BadRequest(new ResponseDTO { Response = e.Message });
+            return BadRequest(new ResponseDTO { response = e.Message });
         }
     }
 
@@ -113,11 +113,11 @@ public IActionResult GetFriends()
         try
         {
             _userService.HandleAcceptFriendRequest(dto);
-            return Ok(new ResponseDTO { Response = "Success" });
+            return Ok(new ResponseDTO { response = "Success" });
         }
         catch (Exception e)
         {
-            return BadRequest(new ResponseDTO { Response = e.Message });
+            return BadRequest(new ResponseDTO { response = e.Message });
         }
     }
 
@@ -128,11 +128,11 @@ public IActionResult GetFriends()
         try
         {
             _userService.HandleCancelFriendRequest(dto);
-            return Ok(new ResponseDTO { Response = "Success" });
+            return Ok(new ResponseDTO { response = "Success" });
         }
         catch (Exception e)
         {
-            return BadRequest(new ResponseDTO { Response = e.Message });
+            return BadRequest(new ResponseDTO { response = e.Message });
         }
     }
 
@@ -149,7 +149,7 @@ public IActionResult GetFriends()
         }
         catch (Exception e)
         {
-            return BadRequest(new ResponseDTO { Response = e.Message });
+            return BadRequest(new ResponseDTO { response = e.Message });
         }
     }
 }

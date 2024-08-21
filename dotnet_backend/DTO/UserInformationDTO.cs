@@ -1,7 +1,7 @@
 namespace dotnet_backend.DTO{
 public class UserInformationDTO
 {
-    public int UserId { get; set; }
-    public string Avatar { get; set; }
-    public string Name { get; set; }
+    public int userId { get; set; }
+    public string avatar { get; set; }
+    public string name { get; set; }
 }}
