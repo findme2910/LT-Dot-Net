@@ -135,7 +135,7 @@ public IActionResult GetFriends()
             return BadRequest(new ResponseDTO { response = e.Message });
         }
     }
-
+    //phương thức lấy ra danh sách những người bạn đang addfriend mình
     [HttpGet("addfriend")]
     [Authorize]
     public IActionResult GetAddFriends()

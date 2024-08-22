@@ -7,7 +7,7 @@ namespace dotnet_backend.DTO
 {
     public class LoginDTO
     {
-        public String phone { get; set; }
-        public String password { get; set; }
+        public string phone { get; set; }
+        public string password { get; set; }
     }
 }

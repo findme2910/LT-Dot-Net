@@ -21,7 +21,6 @@
                 app:civ_border_width="4dp"
                 style="@style/DECOLOR"
                 android:src="@drawable/ic_launcher_background"
-                app:civ_border_color="?attr/colorOnPrimary"
                 android:layout_width="131dp"
                 android:layout_height="wrap_content"
         />
