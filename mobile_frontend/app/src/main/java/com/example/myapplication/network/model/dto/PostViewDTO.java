@@ -10,6 +10,7 @@ public class PostViewDTO {
 	private String avatarUser;
 	private String image;
 	private String content;
+	private int postScope;
 	// thuộc tính này thể hiện người dùng đã like hay chưa like cái Post này hay không
 	private boolean liked;
 	private int numberLike;

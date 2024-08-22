@@ -44,6 +44,7 @@ import com.example.myapplication.ui.activities.FriendsListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProfileFragment extends Fragment {
     private ActivityResultLauncher<Intent> profileEditLauncher;
@@ -52,7 +53,7 @@ public class ProfileFragment extends Fragment {
     private int userId;
     private RecyclerView recyclerViewFriendList, recyclerViewPost;
     private ProfileAdapter profileAdapter;
-    private PostProfileAdapter postProfileAdapter;
+    private PostAdapter postProfileAdapter;
 
     private PostAdapter postAdapter;
     private List<FriendViewDTO> friends;
@@ -233,7 +234,19 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onSuccess(List<PostViewDTO> postList) {
                 result.addAll(postList);
-                postProfileAdapter = new PostProfileAdapter(view.getContext(), result);
+                postProfileAdapter = new PostAdapter(result.stream().map(n -> Post.builder()
+                        .postId(n.getPostId())
+                        .userId(n.getUserId())
+                        .img(n.getImage())
+                        .name(n.getName())
+                        .content(n.getContent())
+                        .avatar(n.getAvatarUser())
+                        .isLike(n.isLiked())
+                        .scope(n.getPostScope())
+                        .numberOfComment(n.getNumberComment())
+                        .numberOfLike(n.getNumberLike())
+                        .createAt(n.getCreateAt())
+                        .build()).collect(Collectors.toList()),ProfileFragment.this.getContext());
                 recyclerViewPost.setAdapter(postProfileAdapter);
             }
 

@@ -13,5 +13,6 @@ namespace dotnet_backend.Service
         List<Post> GetSpecific(int userId);
         //lấy ra danh sách comment trên một bài post nào đó
         List<Comment> GetComments(int postId);
+        void changeScope(int id, PostScope scope);
     }
 }
