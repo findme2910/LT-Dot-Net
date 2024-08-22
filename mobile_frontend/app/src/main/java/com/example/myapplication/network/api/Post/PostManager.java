@@ -30,6 +30,25 @@ public class PostManager {
         });
     }
 
+    public void changePostScope(int postid, int scope, HandleListener<ResponseDTO> callback) {
+        String token = JwtTokenManager.getInstance().getToken();
+        Call<ResponseDTO> call = postApi.updatePostScope(postid,scope,"Bearer " + token);
+        call.enqueue(new Callback<ResponseDTO>() {
+            @Override
+            public void onResponse(Call<ResponseDTO> call, Response<ResponseDTO> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onFailure("Failed to update post scope");
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseDTO> call, Throwable t) {
+                callback.onFailure("Load Failure");
+            }
+        });
+    }
+
     public void getSpecificPost(int userId, HandleListener<List<PostViewDTO>> callback) {
         String token = JwtTokenManager.getInstance().getToken();
         Call<List<PostViewDTO>> call = postApi.getSpecificPost("Bearer " + token, userId);

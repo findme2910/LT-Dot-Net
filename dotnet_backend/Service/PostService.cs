@@ -14,12 +14,14 @@ namespace dotnet_backend.Service
         private readonly IConfiguration _configuration;
         private readonly ApplicationDBContext _context;
         private readonly JwtHelper _jwtHelper;
+        private readonly AuthStaticService _authStaticService;
 
-        public PostService(IConfiguration configuration, ApplicationDBContext context, JwtHelper jwtHelper)
+        public PostService(IConfiguration configuration, ApplicationDBContext context, AuthStaticService authStaticService, JwtHelper jwtHelper)
         {
             _configuration = configuration;
             _context = context;
             _jwtHelper = jwtHelper;
+            _authStaticService = authStaticService;
         }
 
         public void Save(AddPostDTO dto, int userId)
@@ -54,23 +56,25 @@ namespace dotnet_backend.Service
             }
 
             var users = new List<User>(user.Friends) { user };
-            return _context.Posts
+            var posts = _context.Posts
                 .Where(p => users.Contains(p.User))
                 .Include(p => p.Comments)
                 .Include(p => p.Likes)
                 .OrderByDescending(p => p.CreateAt)
                 .ToList();
+            return filterByPostScope(posts);
         }
 
         public List<Post> GetSpecific(int userId)
         {
-            return _context.Posts
+            var posts = _context.Posts
                 .Where(p => p.UserId == userId)
                 .Include(p => p.Comments)
                 .Include(p => p.Likes)
                 .Include(p => p.User)
                 .OrderByDescending(p => p.CreateAt)
                 .ToList();
+            return filterByPostScope(posts);
         }
 
         public List<Comment> GetComments(int postId)
@@ -93,7 +97,36 @@ namespace dotnet_backend.Service
             return mainComments;
         }
 
+        public void changeScope(int id, PostScope scope)
+        {
+            var post = _context.Posts.Find(id);
+            var user = _authStaticService.CurrentUser();
+            if (post == null)
+            {
+                throw new Exception("Post id not found");
+            }
+            if (post.UserId != user.Id)
+            {
+                throw new Exception("This Post didn't owned by you");
+            }
+            post.PostScope = scope;
+            _context.SaveChanges();
+        }
 
+        private List<Post> filterByPostScope(List<Post> posts)
+        {
+            var currentUserId = _authStaticService.CurrentUser().Id;
 
+            var listFriendID = _authStaticService.CurrentUser().Friends.Select(n => n.Id).ToList();
+
+            var filterPosts = posts.Where(post =>
+                post.PostScope != PostScope.PRIVATE && post.PostScope != PostScope.FRIEND ||
+                (post.PostScope != PostScope.PRIVATE || post.UserId == currentUserId) ||
+                (post.PostScope == PostScope.FRIEND && (post.UserId == currentUserId || listFriendID.Contains(post.UserId)))
+            ).ToList();
+
+            return filterPosts;
+
+        }
     }
 }

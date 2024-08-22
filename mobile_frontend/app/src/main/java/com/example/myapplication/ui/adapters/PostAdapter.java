@@ -2,6 +2,7 @@ package com.example.myapplication.ui.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +11,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.convert.DateConvert;
@@ -21,10 +22,8 @@ import com.example.myapplication.network.api.HandleListener;
 import com.example.myapplication.network.api.Post.PostManager;
 import com.example.myapplication.network.model.dto.LikeDTO;
 import com.example.myapplication.ui.activities.CommentsActivity;
-import com.example.myapplication.ui.fragment.CommentsFragment;
 
 import com.example.myapplication.ui.fragment.MyBottomSheetFragment;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
@@ -37,7 +36,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     private Context context;
 
-    public PostAdapter(List<Post> posts , Context context) {
+    public PostAdapter(List<Post> posts, Context context) {
         this.posts = posts;
         this.postManager = new PostManager();
         this.context = context;
@@ -56,12 +55,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
 
+        SharedPreferences sharedPreferences = context.getSharedPreferences("MyAppPrefs", context.MODE_PRIVATE);
+        int userid = sharedPreferences.getInt("iduser", 0);
+
         Post post = posts.get(position);
         holder.avatar.setImageBitmap(ImageConvert.base64ToBitMap(post.getAvatar()));
         holder.img.setImageBitmap(ImageConvert.base64ToBitMap(post.getImg()));
         holder.content.setText(post.getContent());
         holder.name.setText(post.getName());
-        holder.comment.setText(post.getNumberOfComment()+" comments");
+        holder.comment.setText(post.getNumberOfComment() + " comments");
         //handle Comment
         holder.postComment.setOnClickListener(view -> {
             Context context = view.getContext();
@@ -69,20 +71,38 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             intent.putExtra("postID", post.getPostId());
             context.startActivity(intent);
         });
-
+        if(post.getUserId() != userid){
+            holder.mutiChoose.setVisibility(View.GONE);
+        }
+        changeScopeIcon(holder,post.getScope());
         holder.mutiChoose.setOnClickListener(n -> {
             MyBottomSheetFragment bottomSheet = new MyBottomSheetFragment();
+            Bundle args = new Bundle();
+            args.putInt("scope" , post.getScope());
+            args.putInt("postId" , post.getPostId());
+            bottomSheet.setArguments(args);
             bottomSheet.show(((FragmentActivity) context).getSupportFragmentManager(), bottomSheet.getTag());
+            ((FragmentActivity) context).getSupportFragmentManager().setFragmentResultListener("requestKey",  ((FragmentActivity)context), new FragmentResultListener() {
+                @Override
+                public void onFragmentResult(String requestKey, Bundle result) {
+                    if ("requestKey".equals(requestKey)) {
+                        // Nhận kết quả từ Fragment
+                        int newScope = result.getInt("newScope");
+                        post.setScope(newScope);
+                        changeScopeIcon(holder,newScope);
+                    }
+                }
+            });
         });
-        holder.like.setText(post.getNumberOfLike()+" likes");
+        holder.like.setText(post.getNumberOfLike() + " likes");
         if (post.isLike()) {
             holder.likeButton.setImageResource(R.drawable.heart);
         } else {
 
             holder.likeButton.setImageResource(R.drawable.icon_heart);
         }
-        holder.likeButton.setOnClickListener(n ->{
-            changeLike(holder,post);
+        holder.likeButton.setOnClickListener(n -> {
+            changeLike(holder, post);
             postManager.like(LikeDTO.builder().postId(post.getPostId()).build(), new HandleListener<String>() {
                 @Override
                 public void onSuccess(String s) {
@@ -90,7 +110,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 @Override
                 public void onFailure(String errorMessage) {
                     System.out.println(errorMessage);
-                   changeLike(holder,post);
+                    changeLike(holder, post);
                 }
             });
         });
@@ -101,20 +121,28 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public int getItemCount() {
         return posts.size();
     }
-    private static void changeLike(ViewHolder holder , Post post){
-        if(post.isLike()) {
+
+    private static void changeLike(ViewHolder holder, Post post) {
+        if (post.isLike()) {
             post.setNumberOfLike(post.getNumberOfLike() - 1);
             holder.likeButton.setImageResource(R.drawable.icon_heart);
             post.setLike(false);
-        }
-        else{
+        } else {
             post.setNumberOfLike(post.getNumberOfLike() + 1);
             holder.likeButton.setImageResource(R.drawable.heart);
             post.setLike(true);
         }
-        holder.like.setText(post.getNumberOfLike()+" likes");
+        holder.like.setText(post.getNumberOfLike() + " likes");
     }
-
+    private void changeScopeIcon(ViewHolder view, int scope){
+        if (scope == 0) {
+            view.scopeIcon.setImageResource(R.drawable.baseline_public_24);
+        } else if (scope == 1) {
+            view.scopeIcon.setImageResource(R.drawable.friend);
+        } else {
+            view.scopeIcon.setImageResource(R.drawable.baseline_lock_24);
+        }
+    }
     @Getter
     @Setter
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -127,7 +155,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private TextView comment;
         private ImageButton likeButton;
         private ImageButton postComment;
-        private ImageView mutiChoose;
+        private ImageView mutiChoose,scopeIcon;
+
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             avatar = itemView.findViewById(R.id.post_user_avatar);
@@ -140,6 +169,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             likeButton = itemView.findViewById(R.id.post_like_button);
             postComment = itemView.findViewById(R.id.post_comment);
             mutiChoose = itemView.findViewById(R.id.muti_setting);
+            scopeIcon = itemView.findViewById(R.id.scope_icon);
         }
     }
 

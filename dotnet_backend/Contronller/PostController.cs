@@ -28,8 +28,9 @@ namespace dotnet_backend.Controller
         public IActionResult Create([FromBody] AddPostDTO dto)
         {
             try
-            { var userId = GetCurrentUserId();
-                _postService.Save(dto,userId);
+            {
+                var userId = GetCurrentUserId();
+                _postService.Save(dto, userId);
                 return Ok(new ResponseDTO("Success"));
             }
             catch (Exception e)
@@ -132,14 +133,30 @@ namespace dotnet_backend.Controller
                 return BadRequest(new ResponseDTO("Failure"));
             }
         }
+        [HttpPut("{id}/scope")]
+        [Authorize]
+        public IActionResult ChangePostScope(int id, [FromQuery] PostScope scope)
+        {
+            try
+            {
+                _postService.changeScope(id , scope);
+               
+                return Ok(new ResponseDTO("Success"));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new ResponseDTO(e.Message));
+            }
+        }
         //lấy id của người dùng hiện tại đăng nhập
         private int GetCurrentUserId()
         {
-        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (userId == null)
-        {
-        throw new Exception("User ID not found");
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+            {
+                throw new Exception("User ID not found");
+            }
+            return int.Parse(userId);
         }
-        return int.Parse(userId);}
     }
 }
