@@ -37,8 +37,8 @@ namespace dotnet_backend.Service
                 Comments = new List<Comment>(),
                 Likes = new List<Like>(),
                 Image = Convert.FromBase64String(dto.image),
-                CreateAt = DateTime.UtcNow,
-                UpdateAt = DateTime.UtcNow
+                CreateAt = DateTime.UtcNow.AddHours(7),
+                UpdateAt = DateTime.UtcNow.AddHours(7)
             };
 
             _context.Posts.Add(post);

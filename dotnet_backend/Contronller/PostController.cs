@@ -109,9 +109,12 @@ namespace dotnet_backend.Controller
                 return Ok(new ResponseDTO("Success"));
             }
             catch (Exception e)
-            {
-                return BadRequest(new ResponseDTO("Failure"));
-            }
+{
+    // Log exception để kiểm tra nguyên nhân lỗi
+    Console.WriteLine(e);
+    return BadRequest(new ResponseDTO("Failure: " + e.Message));
+}
+
         }
         //Lấy ra danh sách các comment trên postID nào đó
         [HttpGet("comment/{postId}")]

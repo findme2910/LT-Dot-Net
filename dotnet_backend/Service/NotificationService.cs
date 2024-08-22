@@ -24,7 +24,7 @@ public class NotificationService
             Content = "Đã thích bài viết của bạn",
             post = to,
             UserId = to.UserId,
-            CreateAt = DateTime.UtcNow
+            CreateAt = DateTime.UtcNow.AddHours(7),
         };
         _context.Notifications.Add(notification);
         _context.SaveChanges();
@@ -41,7 +41,7 @@ public class NotificationService
             Content = "Đã phản hồi bình luận của bạn",
             post = to.Post,
             UserId = to.UserId,
-            CreateAt = DateTime.UtcNow
+            CreateAt = DateTime.UtcNow.AddHours(7),
         };
 
         to.User.Notifications.Add(notification);
@@ -59,7 +59,7 @@ public class NotificationService
             Content = "Đã bình luận bài viết của bạn",
             post = to,
             UserId = to.UserId,
-            CreateAt = DateTime.UtcNow
+            CreateAt = DateTime.UtcNow.AddHours(7),
         };
         _context.Notifications.Add(notification);
         _context.SaveChanges();
@@ -73,7 +73,7 @@ public class NotificationService
             Type = NotificationType.REQUEST_ADD_FRIEND,
             Trigger = currUser,
             Content = "Đã gửi yêu cầu kết bạn",
-            CreateAt = DateTime.UtcNow
+            CreateAt = DateTime.UtcNow.AddHours(7),
         };
 
         to.Notifications.Add(notification);
@@ -89,7 +89,7 @@ public class NotificationService
             Type = NotificationType.ACCEPT_ADD_FRIEND,
             Trigger = currUser,
             Content = "Đã chấp nhận lời mời kết bạn",
-            CreateAt = DateTime.UtcNow
+            CreateAt = DateTime.UtcNow.AddHours(7),
         };
 
         to.Notifications.Add(notification);

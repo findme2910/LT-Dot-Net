@@ -7,6 +7,6 @@ public class NotificationDTO
     public int triggerId { get; set; }
     public string triggerName { get; set; }
     public int? postId { get; set; } // Nullable vì Post có thể là null
-    public DateTime createAt { get; set; }
+    public long createAt { get; set; }
     public NotificationType type { get; set; }
 }

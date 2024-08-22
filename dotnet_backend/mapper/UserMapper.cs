@@ -37,11 +37,14 @@ public static class UserMapper
         };
     }
 
-    public static FriendRequestDTO EntityToFriendRequestDTO(FriendRequest friendRequest)
+    public static FriendViewRequestDTO EntityToFriendRequestDTO(FriendRequest friendRequest)
     {
-        return new FriendRequestDTO
+        return new FriendViewRequestDTO
         {
-            userId = friendRequest.FromUserId
+            userId = friendRequest.FromUserId,
+            name = friendRequest.FromUser.Name,
+            time = DateToMillis(friendRequest.CreateAt),
+            avatar = Convert.ToBase64String(friendRequest.FromUser.Avatar)
         };
     }
     public static NotificationDTO EntityToNotificationDTO(Notification notification)
@@ -53,7 +56,7 @@ public static class UserMapper
         triggerId = notification.Trigger.Id,  // Sử dụng Trigger.Id vì bạn không có TriggerId trong Notification
         triggerName = notification.Trigger?.Name, // Lấy tên người kích hoạt thông báo
         postId = notification.post?.Id, // Post có thể là null, do đó cần kiểm tra trước khi lấy Id
-        createAt = notification.CreateAt,
+        createAt = UserMapper.DateToMillis(notification.CreateAt),
         type = notification.Type
     };
 }

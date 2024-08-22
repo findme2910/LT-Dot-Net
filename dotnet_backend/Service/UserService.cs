@@ -54,7 +54,7 @@ namespace dotnet_backend.Service
                 Comments = new List<Comment>(),
                 Posts = new List<Post>(),
                 Gender = gender,
-                Birth = new DateTime(dto.birth), // Chuyển đổi từ long hoặc Unix timestamp nếu cần
+                Birth = new DateTime(dto.birth), 
                 Avatar = Convert.FromBase64String(_configuration["res:avatar:male"]) // Thay đổi tùy thuộc vào cách xử lý blob
             };
 
@@ -100,7 +100,7 @@ namespace dotnet_backend.Service
                 {
                     UserId = userId,
                     PostId = dto.postId,
-                    CreateAt = DateTime.UtcNow
+                    CreateAt = DateTime.UtcNow.AddHours(7),
                 };
                 _context.Likes.Add(like);
                 
@@ -126,8 +126,8 @@ namespace dotnet_backend.Service
                 UserId = userId,
                 PostId = dto.postId,
                 Content = dto.content,
-                CreateAt = DateTime.UtcNow,
-                UpdateAt = DateTime.UtcNow
+                CreateAt = DateTime.UtcNow.AddHours(7),
+                UpdateAt = DateTime.UtcNow.AddHours(7),
             };
             _context.Comments.Add(comment);
             _context.SaveChanges();
@@ -244,15 +244,15 @@ namespace dotnet_backend.Service
                 UserId = userId,
                 PostId = comment.PostId,
                 Content = dto.content,
-                CreateAt = DateTime.UtcNow,
-                UpdateAt = DateTime.UtcNow
+                CreateAt = DateTime.UtcNow.AddHours(7),
+                UpdateAt = DateTime.UtcNow.AddHours(7),
             };
             //Gửi thông báo 
 
             comment.Replys.Add(reply);
             _context.Comments.Add(reply);
             _context.SaveChanges();
-            _notificationService.ReplyNoti(comment);
+            _notificationService.ReplyNoti(comment); // phần thông báo
         }
 
         //Phần friend
@@ -275,7 +275,7 @@ namespace dotnet_backend.Service
                 FromUserId = currentUser.Id,
                 UserId = dto.userId,  // ID của người nhận yêu cầu kết bạn
                 FromUser = currentUser, // Người gửi yêu cầu kết bạn
-                CreateAt = DateTime.UtcNow
+                CreateAt = DateTime.UtcNow.AddHours(7)
             };
             _context.FriendRequests.Add(friendRequest);
             _context.SaveChanges();
@@ -331,20 +331,27 @@ namespace dotnet_backend.Service
         public List<User> GetSuggestAddFriend()
         {
             var currentUser = _authStaticService.CurrentUser();
-            var friends = currentUser.Friends.Select(f => f.Id).ToList();
-
-            return _context.Users
-                .Where(u => !friends.Contains(u.Id) && u.Id != currentUser.Id)
-                .ToList();
+            var friends = currentUser.Friends.Select(f => f.Id).ToList(); // lấy ra danh sách id bạn bè hiện tại
+            // Lấy danh sách ID của những người dùng đã gửi yêu cầu kết bạn hoặc nhận được yêu cầu kết bạn
+        var pendingRequestIds = _context.FriendRequests
+        .Where(fr => (fr.UserId == currentUser.Id || fr.FromUserId == currentUser.Id))
+        .Select(fr => fr.UserId == currentUser.Id ? fr.FromUserId : fr.UserId)
+        .ToList();
+        var excludeIds = friends.Concat(pendingRequestIds).ToList();
+             return _context.Users
+        .Where(u => !excludeIds.Contains(u.Id) && u.Id != currentUser.Id)
+        .ToList();
         }
-
+// lấy ra danh sách các friendrequest
         public List<FriendRequest> GetAllFriendRequest()
-        {
-            var currentUser = _authStaticService.CurrentUser();
-            return _context.FriendRequests
-                           .Where(fr => fr.UserId == currentUser.Id)
-                           .ToList();
-        }
+{
+    var currentUser = _authStaticService.CurrentUser();
+
+    return _context.FriendRequests
+                   .Include(fr => fr.FromUser) // Tải đối tượng FromUser đi kèm
+                   .Where(fr => fr.UserId == currentUser.Id)
+                   .ToList();
+}
 
 
         public List<User> FindAllAcceptFriend()

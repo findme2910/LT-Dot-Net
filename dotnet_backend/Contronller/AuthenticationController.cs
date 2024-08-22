@@ -44,16 +44,16 @@ namespace dotnet_backend.Contronller
             {
                 _userService.register(dto);
 
-                return Ok("Đăng ký thành công");
+                return Ok(new ResponseDTO {response = "Success"});
             }
             catch (UserAlreadyExistsException ex)
             {
-                return Conflict(new { Message = ex.Message });
+                return Conflict(new ResponseDTO{  response = "Conflict" });
             }
             catch (Exception ex)
             {
                 // Log the exception (optional)
-                return StatusCode(500, new { Message = ex.Message });
+                return StatusCode(500, new ResponseDTO { response = "Error"});
             }
 
         }
