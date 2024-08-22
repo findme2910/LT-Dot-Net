@@ -101,10 +101,11 @@ public class NotificationService
     {
         var currUser = _authStaticService.CurrentUser();
        var notifications = _context.Notifications
-    .Include(n => n.Trigger)  // Tải thông tin về Trigger (người gửi thông báo)
-    .Include(n => n.post)      // Tải thông tin về Post (bài viết liên quan đến thông báo)
-    .Where(n => n.UserId == currUser.Id)  // Lọc theo UserId
-    .ToList();
+        .Include(n => n.Trigger)  // Tải thông tin về Trigger (người gửi thông báo)
+        .Include(n => n.post)      // Tải thông tin về Post (bài viết liên quan đến thông báo)
+        .Where(n => n.UserId == currUser.Id)  // Lọc theo UserId
+        .OrderByDescending(n => n.CreateAt)   // Sắp xếp theo thời gian tạo mới nhất
+        .ToList();
 
 
         currUser.CurrentNoti = notifications.Count;

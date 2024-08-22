@@ -47,17 +47,26 @@ public static class UserMapper
             avatar = Convert.ToBase64String(friendRequest.FromUser.Avatar)
         };
     }
+    public static string EnumToString(NotificationType type)
+{
+    if (type != null)
+    {
+        return type.ToString();
+    }
+    return null;
+}
+
     public static NotificationDTO EntityToNotificationDTO(Notification notification)
 {
     return new NotificationDTO
     {
         avatar = Convert.ToBase64String(notification.Trigger.Avatar),
         content = notification.Content,
-        triggerId = notification.Trigger.Id,  // Sử dụng Trigger.Id vì bạn không có TriggerId trong Notification
-        triggerName = notification.Trigger?.Name, // Lấy tên người kích hoạt thông báo
+        userId = notification.Trigger.Id,  // Sử dụng Trigger.Id vì bạn không có TriggerId trong Notification
+        name = notification.Trigger?.Name, // Lấy tên người kích hoạt thông báo
         postId = notification.post?.Id, // Post có thể là null, do đó cần kiểm tra trước khi lấy Id
         createAt = UserMapper.DateToMillis(notification.CreateAt),
-        type = notification.Type
+        type = UserMapper.EnumToString(notification.Type)
     };
 }
 }}
