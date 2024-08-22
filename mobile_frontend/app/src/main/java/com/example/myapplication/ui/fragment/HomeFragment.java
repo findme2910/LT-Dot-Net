@@ -32,6 +32,7 @@ public class HomeFragment extends Fragment {
     private PostAdapter postAdapter;
 
     private SwipeRefreshLayout homeRefresh;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -41,11 +42,12 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         postsRecyclerView = view.findViewById(R.id.list_post);
         postsRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
@@ -63,6 +65,7 @@ public class HomeFragment extends Fragment {
         new ApiCallTask().execute();
         return view;
     }
+
     private class ApiCallTask extends AsyncTask<Void, Void, List<PostViewDTO>> {
         private final Semaphore semaphore = new Semaphore(0);
 
@@ -105,12 +108,13 @@ public class HomeFragment extends Fragment {
                         .content(n.getContent())
                         .avatar(n.getAvatarUser())
                         .isLike(n.isLiked())
+                        .scope(n.getPostScope())
                         .numberOfComment(n.getNumberComment())
                         .numberOfLike(n.getNumberLike())
                         .createAt(n.getCreateAt())
                         .build());
             });
-            postAdapter = new PostAdapter(posts , HomeFragment.this.getContext());
+            postAdapter = new PostAdapter(posts, HomeFragment.this.getContext());
             postsRecyclerView.setAdapter(postAdapter);
             homeRefresh.setRefreshing(false);
         }

@@ -32,9 +32,11 @@ import com.example.myapplication.network.model.instance.JwtTokenManager;
 import com.example.myapplication.ui.adapters.PostAdapter;
 import com.example.myapplication.ui.adapters.PostProfileAdapter;
 import com.example.myapplication.ui.adapters.ProfileAdapter;
+import com.example.myapplication.ui.fragment.ProfileFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ProfileActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> profileEditLauncher;
@@ -42,7 +44,7 @@ public class ProfileActivity extends AppCompatActivity {
     int loggedUserId;// Biến để lưu ID người dùng đăng nhập
     private RecyclerView recyclerViewFriendList, recyclerViewPost;
     private ProfileAdapter profileAdapter;
-    private PostProfileAdapter postProfileAdapter;
+    private PostAdapter postProfileAdapter;
 
     private PostAdapter postAdapter;
     private List<FriendViewDTO> friends;
@@ -210,7 +212,19 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onSuccess(List<PostViewDTO> postList) {
                 result.addAll(postList);
-                postProfileAdapter = new PostProfileAdapter(getApplicationContext(), result);
+                postProfileAdapter = new PostAdapter(result.stream().map(n -> Post.builder()
+                        .postId(n.getPostId())
+                        .userId(n.getUserId())
+                        .img(n.getImage())
+                        .name(n.getName())
+                        .content(n.getContent())
+                        .avatar(n.getAvatarUser())
+                        .isLike(n.isLiked())
+                        .scope(n.getPostScope())
+                        .numberOfComment(n.getNumberComment())
+                        .numberOfLike(n.getNumberLike())
+                        .createAt(n.getCreateAt())
+                        .build()).collect(Collectors.toList()), getApplicationContext());
                 recyclerViewPost.setAdapter(postProfileAdapter);
             }
 

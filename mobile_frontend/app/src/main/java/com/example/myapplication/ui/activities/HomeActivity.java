@@ -69,12 +69,11 @@ public class HomeActivity extends FragmentActivity {
                 startActivity(i);
             }
         });
-        noti.setOnClickListener(v->{
+        noti.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), NotificationActivity.class);
             startActivity(i);
         });
         homeRefresh = findViewById(R.id.swipe_refresh_home);
-
 
 
         homeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -86,23 +85,19 @@ public class HomeActivity extends FragmentActivity {
         posts = new ArrayList<>();
 
 
-
-
         HomeManager homeManager = new HomeManager();
         homeManager.getHomeView(new HandleListener<HomeViewDTO>() {
             @Override
             public void onSuccess(HomeViewDTO homeViewDTO) {
-                if(homeViewDTO.getNumberNoti() == 0){
+                if (homeViewDTO.getNumberNoti() == 0) {
                     numberOfNoti.setText("");
+                } else {
+                    numberOfNoti.setText(homeViewDTO.getNumberNoti() + "");
                 }
-                else{
-                    numberOfNoti.setText(homeViewDTO.getNumberNoti()+"");
-                }
-                if(homeViewDTO.getNumberAddFriend() == 0){
+                if (homeViewDTO.getNumberAddFriend() == 0) {
                     numberAddFriend.setText("");
-                }
-                else{
-                    numberAddFriend.setText(homeViewDTO.getNumberAddFriend()+"");
+                } else {
+                    numberAddFriend.setText(homeViewDTO.getNumberAddFriend() + "");
                 }
 
             }
@@ -158,6 +153,7 @@ public class HomeActivity extends FragmentActivity {
                         .content(n.getContent())
                         .avatar(n.getAvatarUser())
                         .isLike(n.isLiked())
+                        .scope(n.getPostScope())
                         .numberOfComment(n.getNumberComment())
                         .numberOfLike(n.getNumberLike())
                         .createAt(n.getCreateAt())

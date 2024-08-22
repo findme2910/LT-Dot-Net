@@ -20,4 +20,5 @@ public class Post {
     private int numberOfComment;
     private int numberOfLike;
     private boolean isLike;
+    private int scope;
 }

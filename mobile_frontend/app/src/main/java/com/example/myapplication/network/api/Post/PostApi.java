@@ -6,11 +6,7 @@ import com.example.myapplication.network.model.dto.PostViewDTO;
 import com.example.myapplication.network.model.dto.ProfileDTO;
 import com.example.myapplication.network.model.dto.ResponseDTO;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.POST;
-import retrofit2.http.Path;
+import retrofit2.http.*;
 
 import java.util.List;
 
@@ -26,4 +22,11 @@ public interface PostApi {
 
     @POST("/user/like")
     public Call<ResponseDTO> like(@Body LikeDTO dto, @Header("Authorization") String token);
+
+    @PUT("/post/{id}/scope")
+    Call<ResponseDTO> updatePostScope(
+            @Path("id") int postId,
+            @Query("scope") int scope,
+            @Header("Authorization") String token
+    );
 }

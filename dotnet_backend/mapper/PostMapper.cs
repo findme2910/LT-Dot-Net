@@ -17,6 +17,7 @@ namespace dotnet_backend.Helper
                 image = Convert.ToBase64String(post.Image),
                 content = post.Content,
                 numberLike = post.Likes.Count,
+                postScope = post.PostScope,
                 numberComment = post.Comments.Count ,
                 createAt = DateToMillis(post.CreateAt),
                 name = post.User.Name
