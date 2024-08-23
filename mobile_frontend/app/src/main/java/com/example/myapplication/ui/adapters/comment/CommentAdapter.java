@@ -1,5 +1,6 @@
 package com.example.myapplication.ui.adapters.comment;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,6 +71,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
         holder.buttonSendReply.setOnClickListener(v -> {
             String replyText = holder.editTextReply.getText().toString().trim();
             if (!replyText.isEmpty()) {
+                SharedPreferences sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+                String currentUserName = sharedPreferences.getString("username", "Unknown User");
+                String currentUserAvatar = sharedPreferences.getString("avatarUrl", "");
                 // Gửi câu trả lời mới lên server
                 CommentManager commentManager = new CommentManager();
                 commentManager.addreplyComment(comment.getCommentId(), replyText, new HandleListener<String>() {
@@ -77,7 +81,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
                     public void onSuccess(String result) {
                         Calendar calendar = Calendar.getInstance();
                         // Thêm câu trả lời vào danh sách câu trả lời và cập nhật giao diện
-                        Comment replyComment = new Comment(comment.getUserName(), replyText, comment.getAvatar(), calendar.getTime(), comment.getPostID(), new ArrayList<>());
+                        Comment replyComment = new Comment(currentUserName, replyText, currentUserAvatar, calendar.getTime(), comment.getPostID(), new ArrayList<>());
                         comment.getReplies().add(replyComment);
                         notifyItemChanged(adapterPosition);
                         holder.editTextReply.setText(""); // Xóa văn bản sau khi gửi câu trả lời
