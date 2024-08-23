@@ -1,8 +1,10 @@
 package com.example.myapplication.ui.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.myapplication.R;
+import com.example.myapplication.convert.ImageConvert;
 import com.example.myapplication.ui.fragment.CommentsFragment;
 import com.example.myapplication.ui.fragment.AddFriendFragment;
 import com.example.myapplication.ui.fragment.HomeFragment;
@@ -20,12 +23,17 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class TestActivity extends AppCompatActivity {
     private LinearLayout createPost;
-
+    String avatarUrl;
+    private ImageView avartarImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-
+        //set avartar
+        avartarImageView = findViewById(R.id.post_user_avatar);
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        avatarUrl = sharedPreferences.getString("avatarUrl", "");
+        avartarImageView.setImageBitmap(ImageConvert.base64ToBitMap(avatarUrl));
         final Fragment homeFragment = new HomeFragment();
 
         //test

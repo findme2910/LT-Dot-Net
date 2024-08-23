@@ -21,4 +21,5 @@ public class Notification{
     private boolean active;
     private int postId;
 
+
 }

@@ -238,7 +238,7 @@ namespace dotnet_backend.Service
             {
                 throw new Exception("Comment not found");
             }
-
+            var currentUser = _context.Users.FirstOrDefault(u => u.Id == userId);
             var reply = new Comment
             {
                 UserId = userId,
@@ -246,6 +246,7 @@ namespace dotnet_backend.Service
                 Content = dto.content,
                 CreateAt = DateTime.UtcNow.AddHours(7),
                 UpdateAt = DateTime.UtcNow.AddHours(7),
+                User = currentUser
             };
             //Gửi thông báo 
 
